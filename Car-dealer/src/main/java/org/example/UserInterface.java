@@ -47,7 +47,7 @@ import static org.example.ui.Helper.readYear;
             System.out.println("Goodbye!");
         }
 
-        private void init() {
+        public void init() {
             this.dealership = fileManager.getDealership();
         }
 

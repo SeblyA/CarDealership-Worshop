@@ -28,7 +28,7 @@ import java.util.List;
      */
     public class DealershipFileManager {
 
-        private static final Path INVENTORY_PATH = Path.of("src", "main", "resources", "inventory.csv");
+        private static final Path INVENTORY_PATH = Path.of("/Applications/Pluralsight/workbook5/Car-dealer/src/main/resources/inventory.csv");
 
         // Regex delimiter for splitting pipe-separated CSV lines.
         // The pipe symbol | has special meaning in regex, so it must be escaped.
