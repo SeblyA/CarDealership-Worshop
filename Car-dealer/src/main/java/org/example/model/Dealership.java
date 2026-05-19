@@ -58,14 +58,14 @@ public  class Dealership {
      * This protects the internal inventory from being changed directly
      * outside this class.
      */
-    public List<Vehicle> getAllVehicles() {
+    public static List<Vehicle> getAllVehicles() {
         return new ArrayList<>(inventory);
     }
 
     /**
      * Finds all vehicles with a price between the given minimum and maximum price.
      */
-    public List<Vehicle> getVehiclesByPrice(double minPrice, double maxPrice) {
+    public static List<Vehicle> getVehiclesByPrice(double minPrice, double maxPrice) {
         return inventory.stream()
                 // Keep only vehicles where the price is inside the selected range.
                 .filter(vehicle -> vehicle.getPrice() >= minPrice && vehicle.getPrice() <= maxPrice)
@@ -79,7 +79,7 @@ public  class Dealership {
      * - If make is empty, all makes are accepted.
      * - If model is empty, all models are accepted.
      */
-    public List<Vehicle> getVehiclesByMakeModel(String make, String model) {
+    public static List<Vehicle> getVehiclesByMakeModel(String make, String model) {
         // Normalize the search text to make searching case-insensitive.
         String makeSearch = make.trim().toLowerCase();
         String modelSearch = model.trim().toLowerCase();
@@ -98,7 +98,7 @@ public  class Dealership {
     /**
      * Finds all vehicles from a year between the given minimum and maximum year.
      */
-    public List<Vehicle> getVehiclesByYear(int minYear, int maxYear) {
+    public static List<Vehicle> getVehiclesByYear(int minYear, int maxYear) {
         return inventory.stream()
                 // Keep only vehicles where the year is inside the selected range.
                 .filter(vehicle -> vehicle.getYear() >= minYear && vehicle.getYear() <= maxYear)
@@ -108,7 +108,7 @@ public  class Dealership {
     /**
      * Finds all vehicles where the color contains the given search text.
      */
-    public List<Vehicle> getVehiclesByColor(String color) {
+    public static List<Vehicle> getVehiclesByColor(String color) {
         // Normalize the search text to make searching case-insensitive.
         String search = color.trim().toLowerCase();
 
@@ -121,7 +121,7 @@ public  class Dealership {
     /**
      * Finds all vehicles with mileage between the given minimum and maximum mileage.
      */
-    public List<Vehicle> getVehiclesByMileage(int minMileage, int maxMileage) {
+    public static List<Vehicle> getVehiclesByMileage(int minMileage, int maxMileage) {
         return inventory.stream()
                 // Keep only vehicles where the odometer value is inside the selected range.
                 .filter(vehicle -> vehicle.getOdometer() >= minMileage && vehicle.getOdometer() <= maxMileage)
@@ -131,7 +131,7 @@ public  class Dealership {
     /**
      * Finds all vehicles with the selected vehicle type.
      */
-    public List<Vehicle> getVehiclesByType(VehicleType vehicleType) {
+    public static List<Vehicle> getVehiclesByType(VehicleType vehicleType) {
         return inventory.stream()
                 // Enums can safely be compared with ==.
                 .filter(vehicle -> vehicle.getVehicleType() == vehicleType)
@@ -144,7 +144,7 @@ public  class Dealership {
      * Before adding the vehicle, the method checks whether another vehicle
      * with the same VIN already exists. VIN should be unique.
      */
-    public void addVehicle(Vehicle vehicle) {
+    public static void addVehicle(Vehicle vehicle) {
         if (findVehicleByVin(vehicle.getVin()).isPresent()) {
             throw new IllegalArgumentException("A vehicle with VIN " + vehicle.getVin() + " already exists.");
         }
@@ -157,7 +157,7 @@ public  class Dealership {
      *
      * @return true if a vehicle was removed, false if no vehicle with that VIN was found.
      */
-    public boolean removeVehicleByVin(int vin) {
+    public static boolean removeVehicleByVin(int vin) {
         return inventory.removeIf(vehicle -> vehicle.getVin() == vin);
     }
 
@@ -166,7 +166,7 @@ public  class Dealership {
      *
      * Optional is used because the vehicle may or may not exist.
      */
-    public Optional<Vehicle> findVehicleByVin(int vin) {
+    public static Optional<Vehicle> findVehicleByVin(int vin) {
         return inventory.stream()
                 // Find the vehicle with the matching VIN.
                 .filter(vehicle -> vehicle.getVin() == vin)
