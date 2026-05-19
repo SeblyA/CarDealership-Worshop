@@ -14,7 +14,8 @@ public enum MenuOption {
     LIST_ALL(7, "List all vehicles"),
     ADD_VEHICLE(8, "Add a vehicle"),
     REMOVE_VEHICLE(9, "Remove a vehicle"),
-    QUIT(99, "Quit");
+    QUIT(99, "Quit"),
+    CONTRACT(11,"Contract");
 
     private final int code;
     private final String label;
