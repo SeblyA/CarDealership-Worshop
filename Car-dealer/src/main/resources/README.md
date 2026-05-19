@@ -17,9 +17,6 @@ Polymorphism
 Abstraction
 Encapsulation
 
-## 🏗️ Project Structure
-
-
 ## 🚗 Features
 
 🔍 Vehicle Management
